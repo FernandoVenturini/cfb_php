@@ -54,9 +54,5 @@
 </head>
 <body>
 	<h1>Classes</h1>
-
-	<?php
-
-	?>
 </body>
 </html>
