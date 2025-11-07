@@ -1,4 +1,10 @@
 <?php
+//	[ETAPA 0] Inicia a sessão
+session_start();
+
+// [ETAPA 0.1] Inicia o buffer de saída
+ob_start();
+
 // [ETAPA 1] Inclui o arquivo de conexão com o banco de dados
 include_once 'conexao.php';
 
@@ -23,6 +29,10 @@ if (isset($_GET['status']) && $_GET['status'] == 'success') {
     <h1 style="text-align:center;background:purple;padding:3rem;border-radius:10px;font-size:32px;margin:0 auto;">
         Como criar formulario cadastrar no PHP
     </h1>
+
+	<a href="demo1.php">Listar</a>
+	<a href="cadastrar.php">Cadastrar</a>
+	<h2>Cadastrar</h2>
 
     <?php
     // [ETAPA 1.2] Exibe mensagem de sucesso APENAS se veio do redirecionamento
@@ -88,6 +98,10 @@ if (isset($_GET['status']) && $_GET['status'] == 'success') {
                 
                 // [ETAPA 22] Verifica se o INSERT foi bem-sucedido
                 if ($cad_usuario->rowCount()) {
+					// [ETAPA 22.1] Limpa os dados do formulário
+					unset($dados); 
+					// [ETAPA 22.2] Armazena a mensagem de sucesso na sessão
+					$_SESSION['msg'] = "<p style='color:green;'>Usuário cadastrado com sucesso!</p>";
                     // [ETAPA 23] REDIRECIONA para a mesma página com parâmetro de sucesso
                     header("Location: demo1.php?status=success");
                     exit(); // [ETAPA 24] PARA A EXECUÇÃO IMEDIATAMENTE
@@ -111,6 +125,7 @@ if (isset($_GET['status']) && $_GET['status'] == 'success') {
         <label>Nome:</label>
         <!-- [ETAPA 28] Campo de texto para nome com valor pré-preenchido -->
         <input type="text" name="nome" id="nome" placeholder="Digite seu nome completo" value="<?php 
+
         // [ETAPA 29] Verifica se o campo nome existe no array $dados
         if (isset($dados['nome'])) {
             // [ETAPA 30] Previne ataques XSS e exibe o valor
@@ -121,6 +136,7 @@ if (isset($_GET['status']) && $_GET['status'] == 'success') {
         <label for="">E-mail:</label>
         <!-- [ETAPA 31] Campo de email com valor pré-preenchido -->
         <input type="email" name="email" id="email" placeholder="Digite seu melhor e-mail" value="<?php 
+
         // [ETAPA 32] Verifica se o campo email existe no array $dados
         if (isset($dados['email'])) {
             // [ETAPA 33] Previne ataques XSS e exibe o valor
