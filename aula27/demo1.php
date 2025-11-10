@@ -12,13 +12,13 @@ include_once 'conexao.php';
     <!-- 3. CONFIGURAÇÕES BÁSICAS DO HTML -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Celke - aula 7 - Como listar registro do banco de dados e como criar a paginacao com PHP e PDO</title>
+    <title>Celke - aula 8 - Visualizando os detalhes do registro com PHP salvo no banco  de dados</title>
 </head>
 
 <body>
     <!-- 4. CABEÇALHO DA PÁGINA -->
     <h1 style="text-align:center;background:purple;padding:3rem;border-radius:10px;font-size:32px;margin:0 auto;">
-	Celke - aula 7 - Como listar registro do banco de dados e como criar a paginacao com PHP e PDO
+	Celke - aula 8 - Visualizando os detalhes do registro com PHP salvo no banco  de dados
     </h1>
 
 	<!-- 5. MENU DE NAVEGAÇÃO -->
@@ -71,6 +71,7 @@ include_once 'conexao.php';
 				echo "ID: $id <br>";
 				echo "Nome: $nome <br>";
 				echo "Email: $email <br>";
+				echo "<a href='visualizar.php?id=$id'</a>Visualizar</a><br>";
 				echo "<hr>";
 			}
 
